@@ -4,7 +4,7 @@ import json
 import random
 
 # API Pokemon
-
+# PROYECTO MASTERMIND
 # Solicita respuesta de la API
 def api_pokemon():
     os.system('clear')
