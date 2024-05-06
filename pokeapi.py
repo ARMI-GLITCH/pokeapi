@@ -33,9 +33,6 @@ def pokemon_menu(list_pokemons):
     game = False
     while game == False:
         choice_pokemons = []
-        for i , pokemon in enumerate(list_pokemons, 1):
-            print(f"{i}. {pokemon}")
-            print('󰟾' * 15)
         choice = input('-Que deseas hacer?-[PALABRAS MAYUSCULAS PARA RESPONDER]\n'
                        'A 󰛂 Elegir Pokemones Aleatorios\n'
                        'B 󰛂 ELegir los Pokemones manualmente\n')
@@ -55,8 +52,28 @@ def pokemon_menu(list_pokemons):
             print('󰟾' * 60)
             print('󰛂 Haz elegido a {} , {} y {} para la batalla 󰛁'.format(choice_pokemon_1, choice_pokemon_2, choice_pokemon_3))
             print('󰟾' * 60)
-            return new_pokemons            
-        if not choice:
+            return new_pokemons    
+        elif choice == 'B':
+            new_pokemons = []
+            choice_pokemon = False
+            while choice_pokemon == False:
+                for i , pokemon in enumerate(list_pokemons, 1):
+                    print(f"{i}. {pokemon}")        
+                    print('󰟾' * 15)
+                print('Selecciona tu Pokemon , elige un Pokemon por su numero (1-150)\n'
+                      '-------------[SOLO PUEDES ELEGIR 3 POKEMONES]-----------------')
+                choice_your_first_pokemon = int(input('Tu numero > '))
+                choice_first_pokemon = list_pokemons[int(choice_your_first_pokemon) - 1]
+                new_pokemons.append(choice_first_pokemon)
+                if len(new_pokemons) == 3:
+                    os.system('clear')
+                    return new_pokemons
+                elif not choice_your_first_pokemon:
+                    input('[TU ARGUMENTO O LO QUE SEA NO ES VALIDO]\n'
+                          '--------[ENTER PARA CONTINUAR]----------')
+            
+        elif not choice:
+            os.system('clear')
             input('[NO SELECCIONASTE NADA]-[ELIGE UNA RESPUESTA]\n'
                   '-----------[ENTER PARA CONTINUAR]------------\n')
             
