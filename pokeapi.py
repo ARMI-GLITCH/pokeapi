@@ -2,6 +2,7 @@ import requests
 import os
 import json
 import random
+from time import sleep
 
 # API Pokemon
 # PROYECTO MASTERMIND
@@ -57,6 +58,7 @@ def pokemon_menu(list_pokemons):
             new_pokemons = []
             choice_pokemon = False
             while choice_pokemon == False:
+                print('[-SELECCIONA TU POKEMON-]\n')
                 for i , pokemon in enumerate(list_pokemons, 1):
                     print(f"{i}. {pokemon}")        
                     print('󰟾' * 15)
@@ -75,7 +77,6 @@ def pokemon_menu(list_pokemons):
                     os.system('clear')
                     input('[TU ARGUMENTO NO ES VALIDO , INTENTEMOS DE NUEVO]\n'
                           '------------[ENTER PARA CONTINUAR]---------------')
-                    
                 if len(new_pokemons) == 3:
                     os.system('clear')
                     return new_pokemons
@@ -85,7 +86,40 @@ def pokemon_menu(list_pokemons):
                   '-----------[ENTER PARA CONTINUAR]------------\n')
             
 def pokemon_battle(new_pokemons):
-    print('Esta es tu lista de pokemones > ', new_pokemons)
+    os.system('clear')
+    print('󰟾' * 51)
+    print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
+    print('󰟾' * 51)
+    print('-PREPARANDO LA PELEA , POR FAVOR ESPERE UN MOMENTO-')
+    print('󰟾' * 51)
+    sleep(10)
+    input('[-------------[ENTER PARA CONTINUAR]--------------]')
+    os.system('clear')
+    choice_your_pokemon = False
+    while choice_your_pokemon == False:
+        print('Estos son tus pokemones > ', new_pokemons)
+        try:
+            pokemon = int(input('Que Pokemon eliges?\n'
+                                '-1-Primer Pokemon\n'
+                                '-2-Segundo Pokemon\n'
+                                '-3-Tercer Pokemon\n'))
+        except ValueError:
+            os.system('clear')
+            input('[TU ARGUMENTO NO ES VALIDO , INTENTEMOS DE NUEVO]\n'
+                '------------[ENTER PARA CONTINUAR]---------------')
+        if pokemon == 1:
+           print('Elegiste a > ', new_pokemons[0])
+           break
+        elif pokemon == 2:
+           print('Elegiste a > ', new_pokemons[1])
+           break
+        elif pokemon == 3:
+            print('Elegiste a > ', new_pokemons[2])
+            break
+        
+        
+    
+    
              
             
 def main():
