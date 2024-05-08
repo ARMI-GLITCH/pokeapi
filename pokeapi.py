@@ -105,6 +105,7 @@ def pokemon_start(new_pokemons):
         if ready_or_not_ready == 'A':
             os.system('clear')
             input('[ENTONCES A LUCHAR]-[ENTER PARA CONTINUAR]\n')
+            os.system('clear')
             break
         elif ready_or_not_ready == 'B':
             os.system('clear')
@@ -117,9 +118,44 @@ def pokemon_start(new_pokemons):
             os.system('clear')
             
 def pokemon_battle(new_pokemons , list_pokemons):
-    print('Tu lista de Pokemones > ', new_pokemons)
-    print('Tu lista de todos los pokemones > ', list_pokemons)
+    start_battle = False
+    while start_battle == False:
+        print('󰟾' * 51)
+        print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
+        print('󰟾' * 51)
+        print('')
+        print('Tu Pokemones > ', new_pokemons)
+        your_choice = input('Que Pokemon deseas utilizar?\n'
+                            '-1-El primer Pokemon\n'
+                            '-2-El segundo Pokemon\n'
+                            '-3-El tercer Pokemon\n')
+        if your_choice == 1:
+            print('Elegiste a > ', new_pokemons[0])
+        elif your_choice == 2:
+            print('Elegiste a > ', new_pokemons[1])
+        elif your_choice == 3:
+            print('Elegiste a > ', new_pokemons[2])
+            
+        random_pokemon = random.randint(0 , 146)
+        random_list = list_pokemons[random_pokemon]     
+        battle = input('Tu contrincante es : '+ random_list)
+        input('Turno de ' + random_list + ' [CPU]')
+        cpu_choice = random.randint(1, 3)
+        if cpu_choice == 1:
+           input(random_list + ' ataca con Golpe Fuerte y te resta 20 puntos de vida\n'
+                 '[--------------------[ENTER PARA CONTINUAR-----------------------]\n')
+        elif cpu_choice == 2:
+           input(random_list + ' ataca con Golpe Debil y te resta 10 puntos de vida\n'
+                 '[--------------------[ENTER PARA CONTINUAR-----------------------]\n')
+        elif cpu_choice == 3:
+           input(random_list + ' se regenera con Curacion Fuerte y le sube 30 puntos de vida\n'
+                 '[------------------------[ENTER PARA CONTINUAR---------------------------]\n')
+        elif cpu_choice == 4:
+            input(random_list + ' se regenera con Curacion Debil y le sube 15 puntos de vida\n'
+                 '[------------------------[ENTER PARA CONTINUAR----------------------------]\n')
         
+        
+            
             
 def main():
     pokemons = api_pokemon()
