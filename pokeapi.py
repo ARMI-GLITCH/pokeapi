@@ -34,6 +34,7 @@ def pokemon_menu(list_pokemons):
     game = False
     while game == False:
         choice_pokemons = []
+        print('')
         choice = input('-Que deseas hacer?-[PALABRAS MAYUSCULAS PARA RESPONDER]\n'
                        'A 󰛂 Elegir Pokemones Aleatorios\n'
                        'B 󰛂 ELegir los Pokemones manualmente\n')
@@ -85,7 +86,7 @@ def pokemon_menu(list_pokemons):
             input('[NO SELECCIONASTE NADA]-[ELIGE UNA RESPUESTA]\n'
                   '-----------[ENTER PARA CONTINUAR]------------\n')
             
-def pokemon_battle(new_pokemons):
+def pokemon_start(new_pokemons):
     os.system('clear')
     print('󰟾' * 51)
     print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
@@ -95,37 +96,36 @@ def pokemon_battle(new_pokemons):
     sleep(10)
     input('[-------------[ENTER PARA CONTINUAR]--------------]')
     os.system('clear')
-    choice_your_pokemon = False
-    while choice_your_pokemon == False:
-        print('Estos son tus pokemones > ', new_pokemons)
-        try:
-            pokemon = int(input('Que Pokemon eliges?\n'
-                                '-1-Primer Pokemon\n'
-                                '-2-Segundo Pokemon\n'
-                                '-3-Tercer Pokemon\n'))
-        except ValueError:
+    print('Estos son tus pokemones > ', new_pokemons)
+    start = False
+    while start == False:
+        ready_or_not_ready = input('Estas listo para la pelea?\n'
+                                   '-A-Si estoy listo\n'
+                                   '-B-No estoy listo\n')
+        if ready_or_not_ready == 'A':
+            os.system('clear')
+            input('[ENTONCES A LUCHAR]-[ENTER PARA CONTINUAR]\n')
+            break
+        elif ready_or_not_ready == 'B':
+            os.system('clear')
+            input('[ENTONCES VETE COBARDE!]-[ENTER PARA SALIR DEL JUEGO]\n')
+            break
+        elif not ready_or_not_ready:
             os.system('clear')
             input('[TU ARGUMENTO NO ES VALIDO , INTENTEMOS DE NUEVO]\n'
-                '------------[ENTER PARA CONTINUAR]---------------')
-        if pokemon == 1:
-           print('Elegiste a > ', new_pokemons[0])
-           break
-        elif pokemon == 2:
-           print('Elegiste a > ', new_pokemons[1])
-           break
-        elif pokemon == 3:
-            print('Elegiste a > ', new_pokemons[2])
-            break
+                  '------------[ENTER PARA CONTINUAR]---------------')
+            os.system('clear')
+            
+def pokemon_battle(new_pokemons , list_pokemons):
+    print('Tu lista de Pokemones > ', new_pokemons)
+    print('Tu lista de todos los pokemones > ', list_pokemons)
         
-        
-    
-    
-             
             
 def main():
     pokemons = api_pokemon()
     list_pokemons = pokemon_menu(pokemons)
-    pokemon_battle(list_pokemons)
+    pokemon_start(list_pokemons)
+    pokemon_battle(list_pokemons , pokemons)
     
         
 if __name__ == '__main__':
