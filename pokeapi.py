@@ -123,22 +123,25 @@ def pokemon_start(new_pokemons):
             
 def pokemon_battle(new_pokemons , list_pokemons):
     start_battle = False
-    while start_battle == False:
+    while not start_battle:
         print('󰟾' * 51)
         print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
         print('󰟾' * 51)
         print('')
-        print('Tu Pokemones > ', new_pokemons)
-        your_choice = input('Que Pokemon deseas utilizar?\n'
+        print('Tus Pokemones > ', new_pokemons)
+        your_choice = int(input('Que Pokemon deseas utilizar?\n'
                             '-1-El primer Pokemon\n'
                             '-2-El segundo Pokemon\n'
-                            '-3-El tercer Pokemon\n')
+                            '-3-El tercer Pokemon\n'))
         if your_choice == 1:
             print('Elegiste a > ', new_pokemons[0])
+            pokemon_user = new_pokemons[0]
         elif your_choice == 2:
             print('Elegiste a > ', new_pokemons[1])
+            pokemon_user = new_pokemons[1]
         elif your_choice == 3:
             print('Elegiste a > ', new_pokemons[2])
+            pokemon_user = new_pokemons[2]
         
         cpu_pokemons = []
         cpu_1 = random.randint(1, 146)
@@ -150,16 +153,14 @@ def pokemon_battle(new_pokemons , list_pokemons):
         cpu_pokemons.append(choice_cpu_1)
         cpu_pokemons.append(choice_cpu_2)
         cpu_pokemons.append(choice_cpu_3)
-             
+
         battle = input('Tu rivales son : {} , {} , {} '.format(choice_cpu_1, choice_cpu_2, choice_cpu_3))
         start_of_the_game = False
         while start_of_the_game == False:
-            if your_choice == 1:
-                pokemon_user_1 = new_pokemons[0]
-            elif your_choice == 2:
-                pokemon_user_2 = new_pokemons[1]
-            elif your_choice == 3:
-                pokemon_user_3 = new_pokemons[2]
+            elegy_pokemon = {
+                'name' : pokemon_user,
+                pokemon_user : 300
+            }
             enemy_pokemons = {
                 'pokemon_1' : choice_cpu_1,
                 choice_cpu_1 : 100,
@@ -204,10 +205,10 @@ def pokemon_battle(new_pokemons , list_pokemons):
             elif attack_3 == 2:
                 print(name_enemy_3 + ' ataca con Golpe Fuerte y te resta 35 puntos de vida')
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
-            elif attack_3== 3:
+            elif attack_3 == 3:
                 print(name_enemy_3 + ' se regenera con Curacion y se cura 20 puntos de vida')
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
-            input('Turno de > ' + pokemon_user_1 + " [TU]")
+            input('Turno de > ' + elegy_pokemon['name'] + " [TU]")
             
            
             
