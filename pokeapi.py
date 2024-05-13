@@ -190,47 +190,92 @@ def pokemon_battle(new_pokemons , list_pokemons):
             attack_1 = random.randint(1, 3)
             print('Turno de > ', name_enemy_1 + ' 󰚩 [CPU]')
             if attack_1 == 1:
-                print(name_enemy_1 + ' ataca con Ataque Fuerte y te resta 20 puntos de vida')
+                random_attack_1 = random.randint(1, 20)
+                pokemon_user -= random_attack_1
+                print(name_enemy_1 + ' ataca con Ataque Fuerte y te resta {} puntos de vida'.format(random_attack_1))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             elif attack_1 == 2:
-                print(name_enemy_1 + ' ataca con Ataque Debil y te resta 10 puntos de vida')
+                random_attack_1 = random.randint(1, 10)
+                pokemon_user = random_attack_1
+                print(name_enemy_1 + ' ataca con Ataque Debil y te resta {} puntos de vida'.format(random_attack_1))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             elif attack_1 == 3:
-                print(name_enemy_1 + ' se regenera con Curacion y se cura 15 puntos de vida')
+                random_life_1 = random.randint(1, 15)
+                life_enemy_1 += random_life_1
+                print(name_enemy_1 + ' se regenera con Curacion y se cura {} puntos de vida'.format(random_attack_1))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             name_enemy_2 = enemy_pokemons['pokemon_2']
             life_enemy_2 = enemy_pokemons[choice_cpu_2]
             attack_2 = random.randint(1, 3)
             print('Turno de > ', name_enemy_2 + ' 󰚩 [CPU]')
             if attack_2 == 1:
-                print(name_enemy_2 + ' ataca con Ataque Debil y te resta 5 puntos de vida')
+                random_attack_2 = random.randint(1, 5)
+                pokemon_user -= random_attack_2
+                print(name_enemy_2 + ' ataca con Ataque Debil y te resta {} puntos de vida'.format(random_attack_2))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             elif attack_2 == 2:
-                print(name_enemy_2 + ' ataca con Ataque Fuerte y te resta 15 puntos de vida')
+                random_attack_2 = random.randint(1, 15)
+                pokemon_user -= random_attack_2
+                print(name_enemy_2 + ' ataca con Ataque Fuerte y te resta {} puntos de vida'.format(random_attack_2))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             elif attack_2 == 3:
-                print(name_enemy_2 + ' se regenera con Curacion y se cura 10 puntos de vida')
+                random_life_2 = random.randint(1, 10)
+                life_enemy_2 += random_life_2
+                print(name_enemy_2 + ' se regenera con Curacion y se cura {} puntos de vida'.format(random_life_2))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             name_enemy_3 = enemy_pokemons['pokemon_3']
             life_enemy_3 = enemy_pokemons[choice_cpu_3]
             attack_3 = random.randint(1, 3)
             print('Turno de > ', name_enemy_3 + ' 󰚩 [CPU]')
             if attack_3 == 1:
-                print(name_enemy_3 + ' ataca con Ataque Debil y te resta 25 puntos de vida')
+                random_attack_3 = random.randint(1, 25)
+                pokemon_user -= random_attack_3
+                print(name_enemy_3 + ' ataca con Ataque Debil y te resta {} puntos de vida'.format(random_attack_3))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             elif attack_3 == 2:
-                print(name_enemy_3 + ' ataca con Ataque Fuerte y te resta 35 puntos de vida')
+                random_attack_3 = random.randint(1, 35)
+                pokemon_user -= random_attack_3
+                print(name_enemy_3 + ' ataca con Ataque Fuerte y te resta {} puntos de vida'.format(random_attack_3))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
             elif attack_3 == 3:
-                print(name_enemy_3 + ' se regenera con Curacion y se cura 20 puntos de vida')
+                random_life_3 = random.randint(1, 20)
+                life_enemy_3 += random_life_3
+                print(name_enemy_3 + ' se regenera con Curacion y se cura {} puntos de vida'.format(random_life_3))
                 input('----------------------[ENTER PARA CONTINUAR]-------------------------')
+            your_life = elegy_pokemon[pokemon_user]
             print('Turno de > ' + elegy_pokemon['name'] + "  [TU]")
-            input('Que deseas hacer?\n'
-                  '1 󰛂 Ataque Fuerte 󱡂\n'
-                  '2 󰛂 Ataque Debil 󰓥\n'
-                  '3 󰛂 Curacion Instantanea 󱐱\n'
-                  '4 󰛂 Bloquear Golpe \n'
-                  'Tu respuesta : ')
+            your_attack =  int(input('Que deseas hacer?\n'
+                                '1 󰛂 Ataque Fuerte 󱡂\n'
+                                '2 󰛂 Ataque Debil 󰓥\n'
+                                '3 󰛂 Curacion Instantanea 󱐱\n'
+                                '4 󰛂 Bloquear Golpe \n'
+                                'Tu respuesta : '))
+            if your_attack == 1:
+                your_random = random.randint(1, 40)
+                life_enemy_1 -= your_random
+                print(elegy_pokemon['name'] + ' usa Ataque Fuerte y a todos les resta {} puntos de vida'.format(your_random))
+                input('                        [ENTER PARA CONTINUAR]                                 ')
+            if your_attack == 2:
+                your_random = random.randint(1, 25)
+                life_enemy_1 -= your_random
+                print(elegy_pokemon['name'] + ' usa Ataque Debil y a todos les resta {} puntos de vida'.format(your_random))
+                input('                        [ENTER PARA CONTINUAR]                                 ')
+            if your_attack == 3:
+                random_life = random.randint(1, 15)
+                your_life += random_life
+                print(elegy_pokemon['name'] + ' usa Curacion Instantanea y te curas {} puntos de vida'.format(random_life))
+                input('                        [ENTER PARA CONTINUAR]                                 ')
+            if your_attack == 4:
+                print(elegy_pokemon['name'] + ' uso Bloqueo y reduce el 30% del Ataque Fuerte y 50% del Ataque Debil')
+                input('                        [ENTER PARA CONTINUAR]                                 ')
+        if choice_cpu_1 <= 0 and choice_cpu_2 <= 0 and choice_cpu_3 <= 0:
+            print('Hola')
+        elif pokemon_user <= 0:
+            print('Hola de nuevo')
+            
+            
+            
+            
             
             
             
