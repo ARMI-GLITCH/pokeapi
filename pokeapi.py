@@ -137,8 +137,8 @@ def pokemon_start(new_pokemons):
             os.system('clear')
             
 def pokemon_battle(new_pokemons , list_pokemons):
-    start_battle = False
-    while not start_battle:
+    start_battle = True
+    while start_battle == True:
         print('󰟾' * 51)
         print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
         print('󰟾' * 51)
@@ -165,125 +165,123 @@ def pokemon_battle(new_pokemons , list_pokemons):
         cpu_pokemons.append(choice_cpu_1)
         
         battle = input('󱚝 Tu rival es : {}'.format(choice_cpu_1))
-        start_of_the_game = False
+        battle_over = True
         life_your_pokemon = 250
         life_user = life_your_pokemon
         cpu_life = 250
         choice_cpu_life_1 = cpu_life
-        while start_of_the_game == False:
-            your_attack = None
-            attack_1 = random.randint(1, 3)
-            print('󰟾' * 51)
-            print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
-            print('󰟾' * 51)
-            if attack_1 == 1:
-                random_attack_1 = random.randint(1, 20)
-                life_user -= random_attack_1
-                print('󰟾' * 60)
-                print('Turno de > ' + choice_cpu_1 + ' 󰚩 [CPU]')
-                print(choice_cpu_1 + ' ataca con Ataque Fuerte y te resta {} puntos de vida'.format(random_attack_1))
-                life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
-                print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
-                                                                  life_user, life_your_pokemon))
-                life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
-                print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
-                                                                  choice_cpu_life_1, cpu_life))
-                print(' ')
-                input('[----------------------[ENTER PARA CONTINUAR]-------------------------]')
-            elif attack_1 == 2:
-                random_attack_1 = random.randint(1 , 15)
-                life_user -= random_attack_1
-                print('󰟾' * 60)
-                print('Turno de > ' + choice_cpu_1 + ' 󰚩 [CPU]')
-                print(choice_cpu_1 + ' ataca con Ataque Debil y te resta {} puntos de vida'.format(random_attack_1))
-                life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
-                print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
-                                                                  life_user, life_your_pokemon))
-                life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
-                print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
-                                                                  choice_cpu_life_1, cpu_life))
-                print(' ')
-                input('[----------------------[ENTER PARA CONTINUAR]-------------------------]')
-            elif attack_1 == 3:
-                random_life_1 = random.randint(1, 15)
-                choice_cpu_life_1 += random_life_1
-                print('󰟾' * 60)
-                print('Turno de > ' + choice_cpu_1 + ' 󰚩 [CPU]')
-                print(choice_cpu_1 + ' se regenera con Curacion y se cura {} puntos de vida'.format(random_life_1))
-                life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
-                print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
-                                                                  life_user, life_your_pokemon))
-                life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
-                print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
-                                                                  choice_cpu_life_1, cpu_life))
-                print(' ')
-                input('[----------------------[ENTER PARA CONTINUAR]-------------------------]')
-            try:
-                print('󰟾' * 60)
-                your_attack =  int(input(' Que deseas hacer?\n'
-                                    '1 󰛂 Ataque Fuerte 󱡂\n'
-                                    '2 󰛂 Ataque Debil 󰓥\n'
-                                    '3 󰛂 Curacion Instantanea 󱐱\n'
-                                    'Tu respuesta : '))
-            except ValueError:
-                print('󰟾' * 60)
-                print('[No hiciste nada en contra del rival]')
-                input('[-------[ENTER PARA CONTINUAR]------]')
-            except UnboundLocalError:
-                print('[No hiciste nada en contra del rival]')
-                input('[-------[ENTER PARA CONTINUAR]------]')
-            if your_attack == 1:
-                your_random = random.randint(1 , 30)
-                choice_cpu_life_1 -= your_random
-                print('󰟾' * 60)
-                print('Turno de > ' + pokemon_user + '  [TU]')
-                print(pokemon_user + ' usa Ataque Fuerte y a le restas {} puntos de vida'.format(your_random))
-                life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
-                print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
-                                                                  life_user, life_your_pokemon))
-                life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
-                print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
-                                                                  choice_cpu_life_1, cpu_life))
-                print(' ')
-                input('[----------------------------[ENTER PARA CONTINUAR]----------------------------------]')
-                os.system('clear')
-            if your_attack == 2:
-                your_random = random.randint(1, 25)
-                choice_cpu_life_1 -= your_random
-                print('󰟾' * 60)
-                print('Turno de > ' + pokemon_user + '  [TU]')
-                print(pokemon_user + ' usa Ataque Debil y le restas {} puntos de vida'.format(your_random))
-                life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
-                print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
-                                                                  life_user, life_your_pokemon))
-                life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
-                print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
-                                                                  choice_cpu_life_1, cpu_life))
-                print(' ')
-                input('[----------------------------[ENTER PARA CONTINUAR]----------------------------------]')
-                os.system('clear')
-            if your_attack == 3:
-                random_life = random.randint(1, 20)
-                life_user += random_life
-                print('󰟾' * 60)
-                print('Turno de > ' + pokemon_user + '  [TU]')
-                print(pokemon_user + ' usa Curacion Instantanea y te curas {} puntos de vida'.format(random_life))
-                life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
-                print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
-                                                                  life_user, life_your_pokemon))
-                life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
-                print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
-                                                                  choice_cpu_life_1, cpu_life))
-                print(' ')
-                input('[----------------------------[ENTER PARA CONTINUAR]----------------------------------]')
-                os.system('clear')
-            if choice_cpu_life_1 <= 0:
-                os.system('clear')
-                exit()
-            elif life_user <= 0:
-                print('Hola de nuevo')
-                exit()
-        
+        if start_battle:
+            time_to_play = True
+            while time_to_play == True:
+                your_attack = None
+                attack_1 = random.randint(1, 3)
+                print('󰟾' * 51)
+                print('󱎂-----󰐝------󰠰󰠰--POKEMON-BATTLE--󰠰󰠰------󰐝--------󱎂')
+                print('󰟾' * 51)
+                if attack_1 == 1:
+                    random_attack_1 = random.randint(1, 20)
+                    life_user -= random_attack_1
+                    print('Turno de > ' + choice_cpu_1 + ' 󰚩 [CPU]')
+                    print(choice_cpu_1 + ' ataca con Ataque Fuerte y te resta {} puntos de vida'.format(random_attack_1))
+                    life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
+                    print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
+                                                                    life_user, life_your_pokemon))
+                    life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
+                    print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
+                                                                    choice_cpu_life_1, cpu_life))
+                    print(' ')
+                    input('[----------------------[ENTER PARA CONTINUAR]-------------------------]')
+                elif attack_1 == 2:
+                    random_attack_1 = random.randint(1 , 15)
+                    life_user -= random_attack_1
+                    print('Turno de > ' + choice_cpu_1 + ' 󰚩 [CPU]')
+                    print(choice_cpu_1 + ' ataca con Ataque Debil y te resta {} puntos de vida'.format(random_attack_1))
+                    life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
+                    print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
+                                                                    life_user, life_your_pokemon))
+                    life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
+                    print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
+                                                                    choice_cpu_life_1, cpu_life))
+                    print(' ')
+                    input('[----------------------[ENTER PARA CONTINUAR]-------------------------]')
+                elif attack_1 == 3:
+                    random_life_1 = random.randint(1, 15)
+                    choice_cpu_life_1 += random_life_1
+                    print('Turno de > ' + choice_cpu_1 + ' 󰚩 [CPU]')
+                    print(choice_cpu_1 + ' se regenera con Curacion y se cura {} puntos de vida'.format(random_life_1))
+                    life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
+                    print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
+                                                                    life_user, life_your_pokemon))
+                    life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
+                    print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
+                                                                    choice_cpu_life_1, cpu_life))
+                    print(' ')
+                    input('[----------------------[ENTER PARA CONTINUAR]-------------------------]')
+                try:
+                    your_attack =  int(input(' Que deseas hacer?\n'
+                                        '1 󰛂 Ataque Fuerte 󱡂\n'
+                                        '2 󰛂 Ataque Debil 󰓥\n'
+                                        '3 󰛂 Curacion Instantanea 󱐱\n'
+                                        'Tu respuesta : '))
+                except ValueError:
+                    print('[No hiciste nada en contra del rival]')
+                    input('[-------[ENTER PARA CONTINUAR]------]')
+                except UnboundLocalError:
+                    print('[No hiciste nada en contra del rival]')
+                    input('[-------[ENTER PARA CONTINUAR]------]')
+                if your_attack == 1:
+                    your_random = random.randint(1 , 30)
+                    choice_cpu_life_1 -= your_random
+                    print('Turno de > ' + pokemon_user + '  [TU]')
+                    print(pokemon_user + ' usa Ataque Fuerte y a le restas {} puntos de vida'.format(your_random))
+                    life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
+                    print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
+                                                                    life_user, life_your_pokemon))
+                    life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
+                    print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
+                                                                    choice_cpu_life_1, cpu_life))
+                    print(' ')
+                    input('[----------------------------[ENTER PARA CONTINUAR]----------------------------------]')
+                    os.system('clear')
+                if your_attack == 2:
+                    your_random = random.randint(1, 25)
+                    choice_cpu_life_1 -= your_random
+                    print('Turno de > ' + pokemon_user + '  [TU]')
+                    print(pokemon_user + ' usa Ataque Debil y le restas {} puntos de vida'.format(your_random))
+                    life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
+                    print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
+                                                                    life_user, life_your_pokemon))
+                    life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
+                    print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
+                                                                    choice_cpu_life_1, cpu_life))
+                    print(' ')
+                    input('[----------------------------[ENTER PARA CONTINUAR]----------------------------------]')
+                    os.system('clear')
+                if your_attack == 3:
+                    random_life = random.randint(1, 20)
+                    life_user += random_life
+                    print('Turno de > ' + pokemon_user + '  [TU]')
+                    print(pokemon_user + ' usa Curacion Instantanea y te curas {} puntos de vida'.format(random_life))
+                    life_bar_of_your_pokemon = int(life_user * 10 / life_your_pokemon)
+                    print(pokemon_user + '   : [{}{}] ({}/{})'.format('' * life_bar_of_your_pokemon, ' ' * (10 - life_bar_of_your_pokemon),
+                                                                    life_user, life_your_pokemon))
+                    life_bar_cpu_pokemon = int(choice_cpu_life_1 * 10 / cpu_life)
+                    print(choice_cpu_1 + '   : [{}{}] ({}/{})'.format('' * life_bar_cpu_pokemon, ' ' * (10 - life_bar_cpu_pokemon),
+                                                                    choice_cpu_life_1, cpu_life))
+                    print(' ')
+                    input('[----------------------------[ENTER PARA CONTINUAR]----------------------------------]')
+                    os.system('clear')
+                if choice_cpu_life_1 <= 0:
+                    time_to_play = False
+                    battle_over = True
+                    print('Hola')
+                    break
+                elif life_user <= 0:
+                    time_to_play = False
+                    battle_over = True
+                    print('Hola de nuevo')
+                    break
+            
         
             
             
